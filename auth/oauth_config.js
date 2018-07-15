@@ -3,6 +3,23 @@ const FacebookStrategy = require("passport-facebook");
 const users = require("../models/user");
 const hash = require('./hash').hash
 
+
+
+
+
+passport.serializeUser((user,done)=>done(null,user._id));
+
+passport.deserializeUser((userid,done)=>{
+    done(null,userid);
+});
+
+
+
+
+
+
+
+
 passport.use(new FacebookStrategy({
 
     clientID:process.env.FCLIENTID,

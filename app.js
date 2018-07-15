@@ -9,7 +9,7 @@ app.use(require("morgan")('dev'));
 mongoose.connect(process.env.MONGO_URL,{useNewUrlParser:true});
 mongoose.connection
 .once('open',()=>console.log("Connection to mongodb open"))
-.on('error',console.log);
+.on('error',err=>console.log("Some error occurred"));
 
 
 const passport = require("passport");

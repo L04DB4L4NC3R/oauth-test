@@ -7,8 +7,8 @@ router.get("/facebook",passport.authenticate('facebook',{
 
 
 
-router.get("/facebook/redirect",passport.authenticate("facebook"),(err,req,res,next)=>{
-    res.send("USER: " + req.user);
+router.get("/facebook/redirect",passport.authenticate("facebook"),(req,res,next)=>{
+    res.json(req.user);
 });
 
 
