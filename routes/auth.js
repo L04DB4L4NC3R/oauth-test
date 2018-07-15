@@ -3,9 +3,24 @@ const users = require("../models/user");
 
 
 router.post("/signup",(req,res,next)=>{
-   users.create(req.body)
-   .then(res.json)
-   .catch(console.log);
-});
+   users.findOne({name:req.body.name})
+   .then((data)=>{
+       if(data)
+            return res.json({message:"User exists"});
+        
+        users.create(data)
+        .then(d=>res.json(d))
+        .catch(console.log);
+
+   });
+}); 
+
+
+router.post("/login",(req,res,next)=>{
+    users.findOne({name:req.body.name})
+    .then((data)=>{
+        //TODO
+    }).catch(console.log);
+})
 
 module.exports = router;
