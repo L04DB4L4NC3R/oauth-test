@@ -1,13 +1,23 @@
 const express = require("express");
 const app = express();
+const mongoose = require("mongoose");
 
 require("dotenv").config();
 app.use(require("morgan")('dev'));
+
+
+mongoose.connect(process.env.MONGO_URL);
+mongoose.connection
+.once('open',()=>console.log("Connection to mongodb open"))
+.on('error',console.log);
+
 
 const passport = require("passport");
 require("./auth/oauth_config");
 app.use(passport.initialize());
 app.use(passport.session());
+
+
 
 app.use("/auth",require("./routes/oauth"));
 
