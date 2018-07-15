@@ -1,7 +1,7 @@
 const passport = require("passport");
 const FacebookStrategy = require("passport-facebook");
 const users = require("../models/user");
-const hash = require('./auth/hash').hash
+const hash = require('./hash').hash
 
 passport.use(new FacebookStrategy({
 
