@@ -8,15 +8,11 @@ const hash = require('./hash').hash
 
 
 
-passport.serializeUser((user,done)=>done(null,user._id));
+passport.serializeUser((user,done)=>done(null,user.user._id));
 
 passport.deserializeUser((userid,done)=>{
     done(null,userid);
 });
-
-
-
-
 
 
 
@@ -33,7 +29,7 @@ passport.use(new FacebookStrategy({
     .then((u)=>{
         if(u){
             console.log("user exists");
-            done(null,u);
+            done(null,{user:u,accessToken});
         }
         else{
             hash(profile.id)
@@ -44,7 +40,7 @@ passport.use(new FacebookStrategy({
                     oauth_id:profile.id
                 }).save().then((us)=>{
                     console.log("created new user");
-                    done(null,us);
+                    done(null,{user:us,accessToken});
                 }).catch(console.log);
             }).catch(console.log);
         }
