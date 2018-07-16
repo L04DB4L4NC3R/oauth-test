@@ -7,6 +7,7 @@ const hash = require('./hash').hash
 
 
 
+
 passport.serializeUser((user,done)=>done(null,user._id));
 
 passport.deserializeUser((userid,done)=>{
@@ -27,8 +28,7 @@ passport.use(new FacebookStrategy({
     callbackURL:process.env.FCALLBACKURL
 
 },(accessToken,refreshToken,profile,done)=>{
-
-    
+    console.log(profile)
     users.findOne({oauth_id:profile.id})
     .then((u)=>{
         if(u){
@@ -40,7 +40,8 @@ passport.use(new FacebookStrategy({
             .then((p)=>{
                 new users({
                     name:profile.displayName,
-                    passwd:p
+                    passwd:p,
+                    oauth_id:profile.id
                 }).save().then((us)=>{
                     console.log("created new user");
                     done(null,us);

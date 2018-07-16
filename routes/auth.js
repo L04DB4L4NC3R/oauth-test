@@ -19,7 +19,7 @@ router.post("/signup",(req,res,next)=>{
 router.post("/login",(req,res,next)=>{
     users.findOne({name:req.body.name})
     .then((data)=>{
-        //TODO
+        res.send(req.body)
     }).catch(console.log);
 })
 

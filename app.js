@@ -3,6 +3,7 @@ const app = express();
 
 //environment vars
 require("dotenv").config();
+
 app.use(require("morgan")('dev'));
 
 //Post request handler
