@@ -29,7 +29,7 @@ app.use(passport.session());
 app.use("/auth",require("./routes/oauth"));
 app.use("/auth",require("./routes/auth"));
 
-app.use("/",(requestAnimationFrame,res,next)=>{
+app.use("/",(req,res,next)=>{
     res.json({message:"Welcome"});
 });
 
