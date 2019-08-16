@@ -17,7 +17,7 @@
   "dependencies": {
     "bcrypt": "^3.0.0",
     "body-parser": "^1.18.3",
-    "dotenv": "^6.0.0",
+    "dotenv": "^8.0.0",
     "express": "^4.16.3",
     "fb": "^2.0.0",
     "mongoose": "^5.6.9",
